@@ -1,0 +1,90 @@
+@font-face {
+	font-family: music;
+	src: url(fonts/music.ttf) format('truetype');	
+}
+
+html{
+	font-size: 20px;
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+body{
+	background: linear-gradient(90deg, #2193b0 , #6dd5ed);
+	margin: 50px 2rem;;
+	min-height: calc(100vh - 100px);
+}
+
+div.container{
+	display: grid;
+	position: relative;
+	justify-items: center;
+	
+
+}
+
+#canvas {
+	display: block;	
+}
+
+#options{
+	width: 100%;
+	margin: 2rem 0;
+	display: grid;
+	grid-gap: 10px;
+
+	grid-template-columns: 1fr;
+}
+
+#options > *{
+	min-height: 3rem;
+	text-align: center;
+	font-size: 2rem;
+	min-width: 0;
+
+	box-shadow: 2px 2px 5px #111;
+	border-radius: 5px;
+}
+
+#options button{
+	background: linear-gradient(90deg, #ec6f66, #f3a183);
+	border-style: none;
+	padding: 0 0.5rem;
+}
+
+#options button:hover{
+	cursor: pointer;
+}
+
+#png-download{
+		
+	}
+
+@media(min-width: 768px){
+	#options{
+		grid-template-columns: repeat(2, 1fr);
+	}
+	#png-download{
+		grid-column: span 2;
+	}
+}
+
+@media(min-width: 1440px){
+	body{
+		margin: 50px 10rem;
+	}
+
+	#options{
+		grid-template-columns: repeat(4, 1fr);
+	}
+	#png-download{
+		grid-column: span 4;
+	}
+}
