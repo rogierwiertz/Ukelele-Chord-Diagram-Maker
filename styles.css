@@ -53,6 +53,10 @@ div.container{
 	border-radius: 5px;
 }
 
+div.size {
+	background-color: #999;
+}
+
 #options button{
 	background: linear-gradient(90deg, #ec6f66, #f3a183);
 	border-style: none;

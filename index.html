@@ -9,10 +9,8 @@
 	<title>Ukelele Fretboard Maker</title>
 </head>
 <body>
-	
 
 <div class="container">
-	<h1>Ukelele Fretboard Maker</h1>
 	<canvas id="canvas"></canvas>
 
 	<form id="options">
@@ -21,6 +19,33 @@
 		<button id="clear">Clear</button>
 		<button id="copy">Copy to clipboard</button>
 		<button id="png-download">Download PNG</button>
+		
+		<div class="size"> 	
+			<input type="radio" name="size" value="200" id="size200" checked>
+			<label for="size200">200x200</label>
+		</div>
+		
+		<div class="size">	
+			<input type="radio" name="size" value="400" id="size400">
+			<label for="size400">400x400</label>
+		</div>
+
+		<div class="size">	
+			<input type="radio" name="size" value="800" id="size800">
+			<label for="size800">800x800</label>
+		</div>
+
+		<div class="size">	
+			<input type="radio" name="size" value="1600" id="size1600">
+			<label for="size1600">1600x1600</label>
+		</div>
+
+		<div>
+			<input type="checkbox" id="transparent">	
+			<label for="transparent">Transparent</label>
+		</div>
+		
+		
 	</form>		
 </div>
 

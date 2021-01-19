@@ -1,4 +1,10 @@
+//Canvas
 let canvas, ctx;
+//Tweede canvas (offscreen)
+let tempCanvas = document.createElement('canvas');
+let tempCtx = tempCanvas.getContext('2d');
+
+
 let dots = [];
 let strings = [[100, ""], [100 + (200/3), ""], [100 + 2 * (200/3), ""], [100 + 3 * (200/3), ""]];
 
@@ -249,41 +255,53 @@ const clear = function(ev){
 	ukeleleDiagram();
 }
 
+
+//Resize en transparantie
+const format = function(){
+	let radiobuttons = document.querySelectorAll('input[name="size"]');
+	let size = 800;
+	
+	radiobuttons.forEach(input =>{
+			if (input.checked === true) {
+				size = input.value;
+			}
+	});
+
+	tempCanvas.width = size;
+	tempCanvas.height = size;
+	
+	tempCtx.drawImage(canvas, 0, 0, size, size);
+
+	if(! document.getElementById('transparent').checked ) {
+		tempCtx.globalCompositeOperation = "destination-over";
+		tempCtx.fillStyle = '#FFF';
+		tempCtx.fillRect(0,0,size,size);
+	}
+
+}
+
 //Kopier canvas naar het klembord
 const copy = function(ev){
 	ev.preventDefault();
-	let h = canvas.height;
-	let w = canvas.width;
-
-	//Krijg huidige waarden om na het kopieren te herstellen
-	let compositeOperation = ctx.globalCompositeOperation;
-	let fill = ctx.fillStyle;
-	let image = ctx.getImageData(0,0,w,h);
-
-	//Witte achtergrond achter de content op de canvas
-	ctx.globalCompositeOperation = "destination-over";
-	ctx.fillStyle = '#FFF';
-	ctx.fillRect(0,0,w,h);
+	
+	format();	
 
 	//Kopieren naar klembord
-	canvas.toBlob(function(blob){
+	tempCanvas.toBlob(function(blob){
 		let item = new ClipboardItem({ "image/png": blob});
 		navigator.clipboard.write([item]);
-	}, "image/png", 1);
-
-	//Herstellen van originele waarden en content op de canvas (zonder de witte achtergrond)
-	ctx.globalCompositeOperation = compositeOperation;
-	ctx.fillStyle = fill;
-	ctx.clearRect(0,0,w,h);
-	ctx.putImageData(image, 0, 0);
+	}, "image/png", 1.0);
+	
 }
 
 //Download de afbeelding als PNG bestand
 const download = function(ev){
 	ev.preventDefault();
 
+	format();
+
 	let a = document.createElement('a');
-	a.href = canvas.toDataURL("image/png", 1);
+	a.href = tempCanvas.toDataURL("image/png", 1);
 	
 	let filename = "ukelele-chord-";
 	let chordname = document.getElementById('chord').value;
