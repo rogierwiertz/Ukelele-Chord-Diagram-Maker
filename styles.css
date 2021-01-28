@@ -194,7 +194,9 @@ body {
 
 @media all and (max-width: 500px) {
   html {
-    font-size: 30%; }
+    font-size: 25%; }
+  body {
+    padding: 1rem; }
   .base-card {
     max-width: 90%;
     margin: auto; }
