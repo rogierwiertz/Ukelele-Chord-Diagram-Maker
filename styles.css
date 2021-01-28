@@ -188,15 +188,16 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
-@media screen and (max-width: 1000px) {
+@media all and (max-width: 1000px) {
   .app__content {
     grid-template-columns: 1fr; } }
 
-@media screen and (max-width: 500px) {
+@media all and (max-width: 500px) {
   html {
     font-size: 30%; }
   .base-card {
-    max-width: 100%; }
+    max-width: 90%;
+    margin: auto; }
     .base-card__title {
       font-size: 3rem; }
   #canvas {
