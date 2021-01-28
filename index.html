@@ -1,57 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-	<link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 
-	<title>Ukelele Fretboard Maker</title>
-</head>
-<body>
+    <title>Ukelele Fretboard Maker</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo-box">
+        <img src="img/logo.png" alt="logo" class="header__logo" />
+      </div>
 
-<div class="container">
-	<canvas id="canvas"></canvas>
+      <div class="header__text-box">
+        <h1 class="heading-primary">
+          <span class="heading-primary--main">Ukelele</span>
+          <span class="heading-primary--sub">Chord Chart Maker</span>
+        </h1>
+        <a href="#app" class="btn btn--white btn--animated"
+          >Let's get started</a
+        >
+      </div>
+    </header>
 
-	<form id="options">
-		<input type="text" id="chord" placeholder="Chord">
-		<input type="number" min="0" max="12" id="fret" placeholder="Fret">
-		<button id="clear">Clear</button>
-		<button id="copy">Copy to clipboard</button>
-		<button id="png-download">Download PNG</button>
-		
-		<div class="size"> 	
-			<input type="radio" name="size" value="200" id="size200" checked>
-			<label for="size200">200x200</label>
-		</div>
-		
-		<div class="size">	
-			<input type="radio" name="size" value="400" id="size400">
-			<label for="size400">400x400</label>
-		</div>
+    <main class="app" id="app">
+      <section class="app__header">
+        <h2 class="heading-secondary">
+          Create your
+          <span class="text--primary">chord</span> image now!
+        </h2>
+      </section>
 
-		<div class="size">	
-			<input type="radio" name="size" value="800" id="size800">
-			<label for="size800">800x800</label>
-		</div>
+      <section class="app__content">
+        <div class="base-card">
+          <h3 class="base-card__title">
+            Click<span class="text--primary">&</span>customize
+          </h3>
+          <canvas id="canvas"></canvas>
+        </div>
 
-		<div class="size">	
-			<input type="radio" name="size" value="1600" id="size1600">
-			<label for="size1600">1600x1600</label>
-		</div>
+        <div class="base-card">
+			<h3 class="base-card__title">
+				Options<span class="text--primary">&</span>Download
+			  </h3>
+          <form id="options" class="options">
+			  <div class="options__inputs">
+				  <div class="form-control form-control--inputs">
+					<label for="chord">Chord name</label>
+					<input type="text" id="chord" />
+				  </div>
+				  <div class="form-control form-control--inputs">
+					<label for="fret">Starting fret</label>
+					<input type="number" min="0" max="12" id="fret" />
+				  </div>
+			  </div>
 
-		<div>
-			<input type="checkbox" id="transparent">	
-			<label for="transparent">Transparent</label>
-		</div>
-		
-		
-	</form>		
-</div>
+			<div class="options__formats">
+				<p>Select format:</p>
+				<div class="form-control form-control--formats">
+				  <input
+					type="radio"
+					name="size"
+					value="200"
+					id="size200"
+					checked
+				  />
+				  <label for="size200">200x200</label>
+				</div>
+	
+				<div class="form-control form-control--formats">
+				  <input type="radio" name="size" value="400" id="size400" />
+				  <label for="size400">400x400</label>
+				</div>
+	
+				<div class="form-control form-control--formats">
+				  <input type="radio" name="size" value="800" id="size800" />
+				  <label for="size800">800x800</label>
+				</div>
+				
+				<div class="form-control form-control--formats">
+					<input type="radio" name="size" value="1600" id="size1600" />
+					<label for="size1600">1600x1600</label>
+				</div>
 
+				<div class="form-control form-control--formats">
+				  <input type="checkbox" id="transparent" />
+				  <label for="transparent">Transparent</label>
+				</div>
+			</div>
 
-<script src="canvas.js"></script>
+			<div class="options__actions">
+				<button class="btn btn--outline" id="clear">Clear</button>
+				<button class="btn btn--black" id="copy">Copy to clipboard</button>
+				<button class="btn btn--primary" id="png-download">Download PNG</button>
+			</div>
 
+          </form>
+        </div>
+      </section>
+    </main>
 
-</body>
+    <script src="canvas.js"></script>
+  </body>
 </html>
