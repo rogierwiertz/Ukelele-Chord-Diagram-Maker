@@ -192,7 +192,7 @@ body {
   .app__content {
     grid-template-columns: 1fr; } }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   html {
     font-size: 30%; }
   .base-card {
@@ -200,6 +200,6 @@ body {
     .base-card__title {
       font-size: 3rem; }
   #canvas {
-    max-width: 100%; }
+    max-width: 300px; }
   header .btn {
     font-size: 3.5rem; } }
